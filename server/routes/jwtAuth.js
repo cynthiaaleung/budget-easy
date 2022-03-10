@@ -18,7 +18,7 @@ router.post("/register", validInfo, async(req, res) => {
     );
 
     if (user.rows.length > 0) {
-      return res.status(401).send("User already exists");
+      return res.status(401).json("User already exists");
     }
 
     // bcrypt user password
@@ -38,7 +38,7 @@ router.post("/register", validInfo, async(req, res) => {
   
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 
@@ -73,7 +73,7 @@ router.post("/login", validInfo, async(req, res) => {
 
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 
@@ -82,7 +82,7 @@ router.get("/verify", authorization, async(req, res) => {
     res.json(true);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json("Server Error");
   }
 });
 
