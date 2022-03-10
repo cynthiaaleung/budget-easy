@@ -72,7 +72,7 @@ router.post("/login", validInfo, async(req, res) => {
     res.json({ token });
 
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
@@ -81,7 +81,7 @@ router.get("/verify", authorization, async(req, res) => {
   try {
     res.json(true);
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
