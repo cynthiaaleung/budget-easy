@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS expenses CASCADE;
+
+CREATE TABLE expenses (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id uuid REFERENCES users(id) ON DELETE CASCADE,
+  category VARCHAR(255) NOT NULL,
+  amount INTEGER NOT NULL
+);
