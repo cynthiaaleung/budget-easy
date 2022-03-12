@@ -9,14 +9,14 @@ module.exports = (req, res, next) => {
 
   if (req.path === "/register") {
     // name, email, password inputs are mandatory
-    if (![email, name, password].every(Boolean)) {
+    if (![email, name, password].every) {
       return res.status(401).json("Missing credentials");
     } else if (!validEmail(email)) {
       return res.status(401).json("Invalid email");
     }
   } else if (req.path === "/login") {
     // email and password inputs are mandatory
-    if (![email, password].every(Boolean)) {
+    if (![email, password].every) {
       return res.status(401).json("Missing credentials");
     } else if (!validEmail(email)) {
       return res.status(401).json("Invalid email");
