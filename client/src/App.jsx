@@ -21,17 +21,17 @@ function App() {
             <Route 
               exact 
               path="/login" 
-              element={authenticated ? <Navigate to="/dashboard" /> : <Login setAuth={setAuth}/>}
+              element={authenticated ? <Navigate to="/dashboard"/> : <Login setAuth={setAuth} />}
             />
             <Route 
               exact 
               path="/register" 
-              element={authenticated ? <Navigate to="/login" /> : <Register setAuth={setAuth}/>}
+              element={authenticated ? <Navigate to="/login"/> : <Register setAuth={setAuth} />}
             />
             <Route 
               exact 
               path="/dashboard" 
-              element={authenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login" />}
+              element={authenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login"/>}
             />
           </Routes>
         </div>
