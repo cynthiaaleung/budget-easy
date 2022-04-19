@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = ({ setAuth }) => {
 
@@ -26,13 +27,18 @@ const Register = ({ setAuth }) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body) // body type has to match Content-Type in headers. Pass values saved in state
       })
-
       // the response is not JSON, so we need to parse it by using json()
-      const parsedRes = await response.json()
-      // store token into local storage
-      localStorage.setItem("token", parsedRes.token);
-      // set to true so will redirect to Dashboard page
-      setAuth(true);
+      const parseRes = await response.json();
+      if (parseRes.token) {
+        // store token into local storage
+        localStorage.setItem("token", parseRes.token);
+        // set to true so will redirect to Dashboard page
+        setAuth(true);
+        toast.success("Registered Successfully!");
+      } else {
+        setAuth(false);
+        toast.error(parseRes);
+      }
 
     } catch (err) {
       console.error(err.message)
